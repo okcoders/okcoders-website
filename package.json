@@ -4,8 +4,8 @@
 	"description": "web app for doing more complicated stuff on the ok coders website",
 	"main": "index.js",
 	"scripts": {
-		"install-all": "concurrently --kill-others-on-fail \"npm install\" \"cd client && npm install\" \"cd server && npm install\" ",
-		"start-all": "npm run install-all && concurrently \"cd db && ./start-and-seed.sh\" \"cd client && npm start\" \"cd server && npm start\"",
+		"install-all": "npm install && concurrently \"cd client && npm install\" \"cd server && npm install\" ",
+		"start-all": "npm run install-all && concurrently --kill-others-on-fail \"cd db && ./start-and-seed.sh\" \"cd client && npm start\" \"cd server && npm start\"",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
