@@ -12,7 +12,7 @@ var classRouter = require('./routes/class');
 var languageRouter = require('./routes/language');
 const userRouter = require('./routes/user');
 
-var app = express();
+var app = express()
 
 app.use(logger('dev'));
 app.use(express.json());

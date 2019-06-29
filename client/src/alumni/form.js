@@ -180,6 +180,7 @@ function AddAlumniForm(props) {
 
 
     function addToAlumniCollection(suc) {
+        successfulSubmitNotification();
         const newAlumni = {
             firstName: firstName,
             lastName: lastName,
@@ -200,6 +201,13 @@ function AddAlumniForm(props) {
                 console.log(JSON.stringify(error));
                 displayNotificationError(error.response.data);
             });
+    }
+
+    function successfulSubmitNotification() {
+        notification["success"]({
+            message: 'Thank you for your application! It is being reviewed.',
+            duration: 7,
+        });
     }
 
     function displayNotificationError(error) {
