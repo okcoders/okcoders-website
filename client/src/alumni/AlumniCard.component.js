@@ -20,7 +20,7 @@ export function AlumniCard(props) {
         <Meta
             avatar={<Avatar src={props.alumni.avatar} />}
             title={props.alumni.firstName + " " + props.alumni.lastName}
-            description={GetAge(props.alumni.age) + ' ' + props.alumni.languages}
+            description={GetAge(props.alumni.birthday) + ' ' + props.alumni.languages}
             />
         </Card>
     )
