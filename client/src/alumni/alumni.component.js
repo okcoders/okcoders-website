@@ -73,17 +73,15 @@ export function Alumni(props) {
   return (
       <>
       <JumboTron />
-              <div>
               <Select
                 mode="tags"
-                className= "multiselect"
-                style={{ width: '25%' }}
+                // className= "multiselect"
+                style={{ width: '25%', marginTop: 12, marginRight: 60, float: 'right' }}
                 placeholder="Tags Mode"
                 onChange={handleChange}
                 >
                 {makeOption()}
               </Select>
-              </div>
               <div style={{ background: '#fff', padding: 60, minHeight: 380 }}>
               <List
                 grid={{
@@ -93,13 +91,12 @@ export function Alumni(props) {
                 dataSource={visibleAlumni}
                 renderItem={renderAlum}
               />
-              <div className="pagination">
               <Pagination 
+                style={{ textAlign: 'center' }}
                 showSizeChanger 
                 onShowSizeChange={onShowSizeChange} 
                 defaultCurrent={1} 
                 total={alumni.length} />
-              </div>
             </div>
     </>
   );

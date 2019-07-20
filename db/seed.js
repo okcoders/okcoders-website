@@ -8,17 +8,17 @@ const classHash3 = "507f191e810c19729de860ef"
 
 db.languages.insertOne({
   _id: ObjectId(htmlHash),
-  language: "html"
+  language: "HTML"
 });
 
 db.languages.insertOne({
   _id: ObjectId(jsHash),
-  language: "js"
+  language: "JavaScript"
 });
 
 db.languages.insertOne({
   _id: ObjectId(cssHash),
-  language: "css"
+  language: "CSS"
 });
 
 db.classes.insertOne({
@@ -52,7 +52,7 @@ db.alumnis.insertOne({
   firstName: "Zach",
   lastName: "Mays",
   avatar: "https://avatars2.githubusercontent.com/u/4370615?s=400&v=4",
-  birthday: new Date(1988, 9, 31),
+  age: new Date(1988, 5, 8),
   linkedin: "https://www.linkedin.com/in/zmays/",
   github: "https://github.com/zmays",
   classes: [classHash, classHash2],
@@ -74,7 +74,7 @@ db.alumnis.insertOne({
   firstName: "Joseph",
   lastName: "Okpara",
   avatar: "https://avatars1.githubusercontent.com/u/42412163?s=400&v=4",
-  birthday: new Date(1988, 9, 31),
+  age: new Date(1988, 4, 2),
   linkedin: "https://www.linkedin.com/in/joseph-okpara-0b8a6429/",
   github: "https://github.com/ojo88",
   classes: [classHash],
@@ -85,7 +85,7 @@ db.alumnis.insertOne({
   firstName: "Brayden",
   lastName: "Robbins",
   avatar: "https://avatars2.githubusercontent.com/u/42324388?s=400&v=4",
-  birthday: new Date(1988, 9, 31),
+  age: new Date(1990, 7, 5),
   linkedin: "https://www.linkedin.com/",
   github: "https://github.com/braydenrobbins",
   classes: [classHash2],
@@ -95,7 +95,7 @@ db.alumnis.insertOne({
   firstName: "Susan",
   lastName: "Moring",
   avatar: "https://avatars0.githubusercontent.com/u/26634819?s=400&v=4",
-  birthday: new Date(1988, 9, 31),
+  age: new Date(1989, 2, 31),
   linkedin: "https://www.linkedin.com/in/susanmoring/",
   github: "https://github.com/smoring",
   classes: [classHash2],
