@@ -3,7 +3,7 @@ var router = express.Router();
 var _ = require('lodash')
 const alumni = require('../models/alumni')
 require('../models/class')
-require('../models/language')
+require('../models/language');
 
 
 /* GET users listing. */
@@ -48,10 +48,9 @@ router.post('/', function (req, res, next) {
   var errors = [];
 
   function validateUrls() {
-    var userGitHub = newAlumni.github
-    var re = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
-    var githubResult = re.test(userGitHub)
-    if (!githubResult) {
+    var userGitHub = newAlumni.github;
+    var re = /(?:http(s)?:\/\/)?(?:www\.)?github\.com\/([a-zA-Z0-9_]+)/.test(userGitHub);
+    if (!re) {
       errors.push('That was not a valid Git Hub URL')
     }
   }
