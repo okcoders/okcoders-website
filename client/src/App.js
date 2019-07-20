@@ -21,10 +21,8 @@ class App extends Component {
       <>
         <Router>
           <Layout>
-            <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-              <Nav />
-            </Header>
             <Content style={{ padding: '0 75px', marginTop: 24 }} className="content">
+              <Route path="/" exact component={Alumni} />
               <Route path="/alumni" exact component={Alumni} />
               <PrivateRoute path="/admin" exact component={Class} />
               <Route path="/alumni/:id" exact component={AlumniDetail} />
@@ -32,7 +30,8 @@ class App extends Component {
               <Route path="/login" exact component={Login} />
             </Content>
             <Footer style={{ textAlign: 'center' }}>
-              OKCoders Organization ©2018, Oklahoma City, OK 
+              <Nav />
+              OKCoders Organization ©2018, Oklahoma City, OK
             </Footer>
           </Layout>
         </Router>

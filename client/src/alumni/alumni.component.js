@@ -9,6 +9,7 @@ const Option = Select.Option;
 const _ = require('lodash');
 
 export function GetAge(birthday) {
+  console.log(birthday)
   var today = new Date();
   var birthDate = new Date(birthday);
   var age = today.getFullYear() - birthDate.getFullYear();
@@ -57,7 +58,7 @@ export function Alumni(props) {
           setVisibleAlumni(alumni)
         });
     } else if (value.length !== 0){
-        const visAlumni = _.filter(alumni, function(alum) {return !_.isEmpty(_.intersectionWith(alum.languages, value, (a, b) => a === b))})
+        const visAlumni = _.filter(alumni, function(alum) {return value.length === _.intersectionWith(alum.languages, value, (a, b) => a === b).length})
         setVisibleAlumni(visAlumni);
     }}
 
@@ -72,17 +73,15 @@ export function Alumni(props) {
   return (
       <>
       <JumboTron />
-              <div>
               <Select
                 mode="tags"
-                className= "multiselect"
-                style={{ width: '25%' }}
+                // className= "multiselect"
+                style={{ width: '25%', marginTop: 12, marginRight: 60, float: 'right' }}
                 placeholder="Tags Mode"
                 onChange={handleChange}
                 >
                 {makeOption()}
               </Select>
-              </div>
               <div style={{ background: '#fff', padding: 60, minHeight: 380 }}>
               <List
                 grid={{
@@ -92,13 +91,12 @@ export function Alumni(props) {
                 dataSource={visibleAlumni}
                 renderItem={renderAlum}
               />
-              <div className="pagination">
               <Pagination 
+                style={{ textAlign: 'center' }}
                 showSizeChanger 
                 onShowSizeChange={onShowSizeChange} 
                 defaultCurrent={1} 
                 total={alumni.length} />
-              </div>
             </div>
     </>
   );

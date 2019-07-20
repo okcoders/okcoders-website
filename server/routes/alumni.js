@@ -3,7 +3,8 @@ var router = express.Router();
 var _ = require('lodash')
 const alumni = require('../models/alumni')
 require('../models/class')
-require('../models/language');
+require('../models/language')
+var moment = require('moment');
 
 
 /* GET users listing. */
@@ -44,7 +45,10 @@ function modifyAlumniResponse(alum) {
 }
 
 router.post('/', function (req, res, next) {
-  var newAlumni = new alumni(req.body.newAlumni);
+  var alum = {...req.body.newAlumni};
+  var Birthday = moment(alum.birthday);
+  alum.birthday = Birthday.toDate();
+  var newAlumni = new alumni(alum);
   var errors = [];
 
   function validateUrls() {
@@ -86,12 +90,16 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-  alumni.findById(req.params.id, (err, alum) => {
+  alumni.findById(req.params.id)
+  .populate({ path: 'classes', populate: { path: 'languages' } })
+  .lean()
+  .exec((err, alum) => {
+    console.log(alum);
     if (err) {
       console.error("couldnt get alumn", err)
       res.status(404).send("Couln't find a Bio for that Alumnus");
     } else {
-      res.json(alum)
+      res.json(modifyAlumniResponse([alum])[0])
     }
   })
 });

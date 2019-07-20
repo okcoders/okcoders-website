@@ -76,7 +76,7 @@ function Login(props) {
                             label="Password:">
                             <Row gutter={8}>
                                 <Col span={12}>
-                                    <Input type="text" name="password" value={password} onChange={e => setPassword(e.target.value)} />
+                                    <Input type="password" name="password" value={password} onChange={e => setPassword(e.target.value)} />
                                 </Col>
                             </Row>
                         </Form.Item>
