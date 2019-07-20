@@ -8,7 +8,7 @@ const alumniSchema = new Schema({
   lastName: String,
   email: String,
   bio: String,
-  birthday: String,
+  birthday: Date,
   avatar: String,
   linkedin: String,
   github: String,

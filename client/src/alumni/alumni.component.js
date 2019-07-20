@@ -9,6 +9,7 @@ const Option = Select.Option;
 const _ = require('lodash');
 
 export function GetAge(birthday) {
+  console.log(birthday)
   var today = new Date();
   var birthDate = new Date(birthday);
   var age = today.getFullYear() - birthDate.getFullYear();

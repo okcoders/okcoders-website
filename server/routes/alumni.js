@@ -4,6 +4,7 @@ var _ = require('lodash')
 const alumni = require('../models/alumni')
 require('../models/class')
 require('../models/language')
+var moment = require('moment');
 
 
 /* GET users listing. */
@@ -44,7 +45,10 @@ function modifyAlumniResponse(alum) {
 }
 
 router.post('/', function (req, res, next) {
-  var newAlumni = new alumni(req.body.newAlumni);
+  var alum = {...req.body.newAlumni};
+  var Birthday = moment(alum.birthday);
+  alum.birthday = Birthday.toDate();
+  var newAlumni = new alumni(alum);
   var errors = [];
 
   function findEmptyField() {

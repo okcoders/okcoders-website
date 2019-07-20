@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { Form, Input, Row, Col, Button, Layout, notification, Select } from 'antd';
 import Config from '../config/app.local.conf.js';
 import { isEmpty } from 'lodash';
+import moment from 'moment';
 
 
 function AddAlumniForm(props) {
@@ -67,6 +68,10 @@ function AddAlumniForm(props) {
     function handleChange(ids) {
         const alumniClasses = allClasses.filter(l => ids.includes(l._id));
         setClass(alumniClasses);
+    }
+
+    function parseDate(date) {
+         return moment(date).toISOString();
     }
 
 
@@ -180,6 +185,7 @@ function AddAlumniForm(props) {
 
 
     function addToAlumniCollection(suc) {
+        successfulSubmitNotification();
         const newAlumni = {
             firstName: firstName,
             lastName: lastName,
@@ -187,7 +193,7 @@ function AddAlumniForm(props) {
             github: gitHub,
             linkedin: linkedIn,
             bio: bio,
-            birthday: birthday,
+            birthday: parseDate(birthday),
             classes: classes
         }
 
@@ -200,6 +206,13 @@ function AddAlumniForm(props) {
                 console.log(JSON.stringify(error));
                 displayNotificationError(error.response.data);
             });
+    }
+
+    function successfulSubmitNotification() {
+        notification["success"]({
+            message: 'Thank you for your application! It is being reviewed.',
+            duration: 7,
+        });
     }
 
     function displayNotificationError(error) {
