@@ -74,12 +74,16 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-  alumni.findById(req.params.id, (err, alum) => {
+  alumni.findById(req.params.id)
+  .populate({ path: 'classes', populate: { path: 'languages' } })
+  .lean()
+  .exec((err, alum) => {
+    console.log(alum);
     if (err) {
       console.error("couldnt get alumn", err)
       res.status(404).send("Couln't find a Bio for that Alumnus");
     } else {
-      res.json(alum)
+      res.json(modifyAlumniResponse([alum])[0])
     }
   })
 });

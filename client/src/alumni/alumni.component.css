@@ -1,23 +1,6 @@
-.pagination {
-    text-align: center;
-  }
-
-.multiselect {
-    float: right;
-    padding: 48;
-    margin: 24;
-}
-
 .backgroundImage {
     background: linear-gradient(rgba(168, 168, 168, 0.993));
-    /* background-image: url(../images/skybackground.jpg); */
-    /* background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom; */
 }
-
-/* Another photo option */
-/* https://cdn.dribbble.com/users/1199246/screenshots/3364565/okc.png */
 
 .jumbotron {
     background-image: url('https://d1pk12b7bb81je.cloudfront.net/generated/1920x910/images/photos/slideshows/1481845520_1481845515-okcbycooperrossslideshow.jpg');
@@ -50,4 +33,9 @@
 
 .content {
     background: linear-gradient( rgba(255, 255, 255, 0.39));
+}
+
+.languages {
+    margin-left: 3.5em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
