@@ -1,5 +1,5 @@
 const config = {
-	websiteServiceUrl: "/"
+	websiteServiceUrl: "/api/"
 }
 
 export default config

@@ -25,10 +25,6 @@ const rootPath = path.join(__dirname, '../../');
 // Client files
 app.use(express.static(path.join(rootPath, 'client/build')));
 
-app.get('*', (req, res, next) => {
-	res.sendFile(path.join(rootPath, 'client/build/index.html'));
-});
-
 const allowedOrigins = ['http://localhost:3000',
 	'https://okcoders.com'];
 app.use(cors({
@@ -53,10 +49,17 @@ db.once('open', function () {
 	console.log("we are connected")
 });
 
-app.use('/', indexRouter);
-app.use('/alumni', alumniRouter);
-app.use('/class', classRouter);
-app.use('/language', languageRouter);
-app.use('/user', userRouter);
+app.use('/api/alumni', alumniRouter);
+app.use('/api/class', classRouter);
+app.use('/api/language', languageRouter);
+app.use('/api/user', userRouter);
+
+app.get('*', (req, res, next) => {
+	res.sendFile(path.join(rootPath, 'client/build/index.html'));
+});
+app.get('/', (req, res, next) => {
+	res.sendFile(path.join(rootPath, 'client/build/index.html'));
+});
+
 
 module.exports = app;

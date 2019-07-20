@@ -15,31 +15,31 @@ import PrivateRoute from './components/PrivateRoute'
 const { Header, Content, Footer } = Layout;
 
 class App extends Component {
-  render() {
-    const Nav = withRouter(NavBar)
-    return (
-      <>
-        <Router>
-          <Layout>
-            <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-              <Nav />
-            </Header>
-            <Content style={{ padding: '0 75px', marginTop: 24 }} className="content">
-              <Route path="/" exact component={Alumni}/>
-              <Route path="/alumni" exact component={Alumni} />
-              <PrivateRoute path="/admin" exact component={Class} />
-              <Route path="/alumni/:id" exact component={AlumniDetail} />
-              <Route path="/addAlumni" exact component={AddAlumniForm} />
-              <Route path="/login" exact component={Login} />
-            </Content>
-            <Footer style={{ textAlign: 'center' }}>
-              OKCoders Organization ©2018, Oklahoma City, OK 
+	render() {
+		const Nav = withRouter(NavBar)
+		return (
+			<>
+				<Router>
+					<Layout>
+						<Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+							<Nav />
+						</Header>
+						<Content style={{ padding: '0 75px', marginTop: 24 }} className="content">
+							<Route path="/" exact component={Alumni} />
+							<Route path="/alumni" exact component={Alumni} />
+							<PrivateRoute path="/admin" exact component={Class} />
+							<Route path="/alumni/:id" exact component={AlumniDetail} />
+							<Route path="/addAlumni" exact component={AddAlumniForm} />
+							<Route path="/login" exact component={Login} />
+						</Content>
+						<Footer style={{ textAlign: 'center' }}>
+							OKCoders Organization ©2018, Oklahoma City, OK
             </Footer>
-          </Layout>
-        </Router>
-      </>
-    );
-  }
+					</Layout>
+				</Router>
+			</>
+		);
+	}
 }
 
 export default App;

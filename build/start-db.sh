@@ -1,3 +1,8 @@
+docker stop mongo
+docker rm mongo
 docker run \
-	-v /data:/data/db \
+	-v "$1"/data:/data/db \
+	-d \
+	-p 27017:27017 \
+	--name mongo \
 	local-mongo
