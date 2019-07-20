@@ -185,7 +185,6 @@ function AddAlumniForm(props) {
 
 
     function addToAlumniCollection(suc) {
-        successfulSubmitNotification();
         const newAlumni = {
             firstName: firstName,
             lastName: lastName,
@@ -199,8 +198,7 @@ function AddAlumniForm(props) {
 
         Axios.post(Config.websiteServiceUrl + "alumni", { newAlumni })
             .then(res => {
-                console.log(res);
-                console.log(res.data);
+                successfulSubmitNotification();
                 clearFields();
             }).catch(function (error) {
                 console.log(JSON.stringify(error));
@@ -208,17 +206,19 @@ function AddAlumniForm(props) {
             });
     }
 
+
     function successfulSubmitNotification() {
         notification["success"]({
             message: 'Thank you for your application! It is being reviewed.',
-            duration: 7,
+            duration: 6,
         });
     }
 
     function displayNotificationError(error) {
         notification["error"]({
-            message: 'Please populate folloiwng fields:',
+            message: 'Please ensure that you have entered the correct information in all required fields:',
             description: error,
+            duration: 6,
         });
         console.log(error);
     };

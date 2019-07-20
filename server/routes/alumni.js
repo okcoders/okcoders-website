@@ -51,15 +51,27 @@ router.post('/', function (req, res, next) {
   var newAlumni = new alumni(alum);
   var errors = [];
 
+  function validateUrls() {
+    var userGitHub = newAlumni.github;
+    var re = /(?:http(s)?:\/\/)?(?:www\.)?github\.com\/([a-zA-Z0-9_]+)/.test(userGitHub);
+    if (!re) {
+      errors.push('That was not a valid Git Hub URL')
+    }
+  }
+
   function findEmptyField() {
     Object.keys(req.body.newAlumni).forEach((value) => {
-      console.log(newAlumni[value].length, value);
       if (!newAlumni[value] || newAlumni[value].length <= 0) {
-        errors.push(value)
+        if (!newAlumni.linkedin || !newAlumni.birthday) {
+          return;
+        } else {
+          errors.push(value)
+        }
       }
     });
   }
 
+  validateUrls();
   findEmptyField();
 
   if (errors.length > 0) {
