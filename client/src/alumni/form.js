@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { Form, Input, Row, Col, Button, Layout, notification, Select } from 'antd';
 import Config from '../config/app.local.conf.js';
 import { isEmpty } from 'lodash';
+import moment from 'moment';
 
 
 function AddAlumniForm(props) {
@@ -67,6 +68,10 @@ function AddAlumniForm(props) {
     function handleChange(ids) {
         const alumniClasses = allClasses.filter(l => ids.includes(l._id));
         setClass(alumniClasses);
+    }
+
+    function parseDate(date) {
+         return moment(date).toISOString();
     }
 
 
@@ -187,7 +192,7 @@ function AddAlumniForm(props) {
             github: gitHub,
             linkedin: linkedIn,
             bio: bio,
-            birthday: birthday,
+            birthday: parseDate(birthday),
             classes: classes
         }
 
