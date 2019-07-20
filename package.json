@@ -6,7 +6,9 @@
 	"scripts": {
 		"install-all": "npm install && concurrently \"cd client && npm install\" \"cd server && npm install\" ",
 		"start-all": "npm run install-all && concurrently --kill-others-on-fail \"cd db && ./start-and-seed.sh\" \"cd client && npm start\" \"cd server && npm start\"",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "cd client && npm run build",
+		"start": "cd server && npm start"
 	},
 	"author": "",
 	"license": "ISC",

@@ -25,6 +25,7 @@ class App extends Component {
               <Nav />
             </Header>
             <Content style={{ padding: '0 75px', marginTop: 24 }} className="content">
+              <Route path="/" exact component={Alumni}/>
               <Route path="/alumni" exact component={Alumni} />
               <PrivateRoute path="/admin" exact component={Class} />
               <Route path="/alumni/:id" exact component={AlumniDetail} />

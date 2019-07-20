@@ -58,7 +58,7 @@ export function Alumni(props) {
           setVisibleAlumni(alumni)
         });
     } else if (value.length !== 0){
-        const visAlumni = _.filter(alumni, function(alum) {return !_.isEmpty(_.intersectionWith(alum.languages, value, (a, b) => a === b))})
+        const visAlumni = _.filter(alumni, function(alum) {return value.length === _.intersectionWith(alum.languages, value, (a, b) => a === b).length})
         setVisibleAlumni(visAlumni);
     }}
 

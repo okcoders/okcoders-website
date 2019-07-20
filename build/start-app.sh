@@ -1,0 +1,1 @@
+docker run local-app
