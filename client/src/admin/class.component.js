@@ -6,6 +6,7 @@ import AddClassModal from './modalSubmit.component';
 import EditClassModal from './editModal.component';
 import baseHeaders from '../utils/baseHeaders';
 import styled from 'styled-components';
+import { GetAge } from '../alumni/alumni.component.js';
 
 function Class() {
   const [classes, setClasses] = useState([]);
@@ -112,7 +113,7 @@ function Class() {
               onCancel={handleCancel}
               onOk={handleCancel}
             >
-              <p>Age: {selectedAlumni.age}</p>
+              <p>Age: {GetAge(selectedAlumni.age)}</p>
               <p>Email: {selectedAlumni.email}</p>
               <p>Github Profile: {selectedAlumni.github}</p>
               <p>Linked In Profile: {selectedAlumni.linkedin}</p>

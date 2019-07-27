@@ -85,7 +85,7 @@ db.alumnis.insertOne({
   firstName: "Brayden",
   lastName: "Robbins",
   avatar: "https://avatars2.githubusercontent.com/u/42324388?s=400&v=4",
-  age: new Date(1990, 7, 5),
+  age: new Date(1998, 8, 5),
   linkedin: "https://www.linkedin.com/",
   github: "https://github.com/braydenrobbins",
   classes: [classHash2],
@@ -103,8 +103,8 @@ db.alumnis.insertOne({
 });
 
 db.users.insertOne({
-    username: "test",
-    // the below password is the hash of "test", so to login: username: test, password: test
-    password: "$2b$10$rkINzU0vhnGH8kkTu4WEQuDwUIK51aQ5kJYeT/ARNVShP5kFuFFQG"
+  username: "test",
+  // the below password is the hash of "test", so to login: username: test, password: test
+  password: "$2b$10$rkINzU0vhnGH8kkTu4WEQuDwUIK51aQ5kJYeT/ARNVShP5kFuFFQG"
 });
 
