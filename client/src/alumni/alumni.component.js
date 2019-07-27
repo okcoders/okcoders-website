@@ -9,13 +9,12 @@ const Option = Select.Option;
 const _ = require('lodash');
 
 export function GetAge(birthday) {
-  console.log(birthday)
   var today = new Date();
   var birthDate = new Date(birthday);
   var age = today.getFullYear() - birthDate.getFullYear();
   var m = today.getMonth() - birthDate.getMonth();
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
+    age--;
   }
   return age;
 }
@@ -26,11 +25,11 @@ export function Alumni(props) {
   const [visibleAlumni, setVisibleAlumni] = useState([]);
   const [tags, setTags] = useState([]);
 
-  
+
   function resetAlumni() {
     return fetch(Config.websiteServiceUrl + "alumni")
-        .then(res => res.json())
-        .then(json => setAlumni(json))
+      .then(res => res.json())
+      .then(json => setAlumni(json))
   }
 
   useEffect(() => {
@@ -39,8 +38,10 @@ export function Alumni(props) {
         .then(res => res.json())
         .then(json => {
           setVisibleAlumni(json);
-          handleChange(tags)})
-  }})
+          handleChange(tags)
+        })
+    }
+  })
 
   useEffect(() => {
     if (isEmpty(allLanguages)) {
@@ -50,17 +51,18 @@ export function Alumni(props) {
     }
   })
 
-  function handleChange(value){
+  function handleChange(value) {
     setTags(value);
-    if (value.length === 0){
+    if (value.length === 0) {
       resetAlumni()
-        .then(function() {
+        .then(function () {
           setVisibleAlumni(alumni)
         });
-    } else if (value.length !== 0){
-        const visAlumni = _.filter(alumni, function(alum) {return value.length === _.intersectionWith(alum.languages, value, (a, b) => a === b).length})
-        setVisibleAlumni(visAlumni);
-    }}
+    } else if (value.length !== 0) {
+      const visAlumni = _.filter(alumni, function (alum) { return value.length === _.intersectionWith(alum.languages, value, (a, b) => a === b).length })
+      setVisibleAlumni(visAlumni);
+    }
+  }
 
   function makeOption() {
     const children = [];
@@ -68,36 +70,36 @@ export function Alumni(props) {
       children.push(<Option key={allLanguages[i].language}>{allLanguages[i].language}</Option>);
     }
     return children
-    }
-  
+  }
+
   return (
-      <>
+    <>
       <JumboTron />
-              <Select
-                mode="tags"
-                // className= "multiselect"
-                style={{ width: '25%', marginTop: 12, marginRight: 60, float: 'right' }}
-                placeholder="Tags Mode"
-                onChange={handleChange}
-                >
-                {makeOption()}
-              </Select>
-              <div style={{ background: '#fff', padding: 60, minHeight: 380 }}>
-              <List
-                grid={{
-                  gutter: 16, column: 3
-                }}
-                bordered
-                dataSource={visibleAlumni}
-                renderItem={renderAlum}
-              />
-              <Pagination 
-                style={{ textAlign: 'center' }}
-                showSizeChanger 
-                onShowSizeChange={onShowSizeChange} 
-                defaultCurrent={1} 
-                total={alumni.length} />
-            </div>
+      <Select
+        mode="tags"
+        // className= "multiselect"
+        style={{ width: '25%', marginTop: 12, marginRight: 60, float: 'right' }}
+        placeholder="Tags Mode"
+        onChange={handleChange}
+      >
+        {makeOption()}
+      </Select>
+      <div style={{ background: '#fff', padding: 60, minHeight: 380 }}>
+        <List
+          grid={{
+            gutter: 16, column: 3
+          }}
+          bordered
+          dataSource={visibleAlumni}
+          renderItem={renderAlum}
+        />
+        <Pagination
+          style={{ textAlign: 'center' }}
+          showSizeChanger
+          onShowSizeChange={onShowSizeChange}
+          defaultCurrent={1}
+          total={alumni.length} />
+      </div>
     </>
   );
 }
@@ -110,7 +112,7 @@ function renderAlum(alum) {
   return (
     <>
       <List.Item>
-        <AlumniCard alumni={alum}/>
+        <AlumniCard alumni={alum} />
       </List.Item>
     </>
   )
