@@ -125,7 +125,7 @@ function AddAlumniForm(props) {
                         </Form.Item>
 
                         <Form.Item
-                            label="GitHub:" >
+                            label="GitHub Username:" >
                             <Row gutter={8}>
                                 <Col span={12}>
                                     <Input type="text" name="gitHub" value={gitHub} onChange={e => setGitHub(e.target.value)} />
@@ -134,7 +134,7 @@ function AddAlumniForm(props) {
                         </Form.Item>
 
                         <Form.Item
-                            label="LinkedIn:" >
+                            label="LinkedIn URL:" >
                             <Row gutter={8}>
                                 <Col span={12}>
                                     <Input type="text" name="linkedin" value={linkedIn} onChange={e => setLinkedIn(e.target.value)} />

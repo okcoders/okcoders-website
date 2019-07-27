@@ -63,7 +63,7 @@ db.alumnis.insertOne({
   firstName: "Terry",
   lastName: "Brown",
   avatar: "https://avatars1.githubusercontent.com/u/42389818?s=400&v=4",
-  birthday: new Date(1988, 9, 31),
+  age: new Date(1988, 9, 31),
   linkedin: "https://www.linkedin.com/in/terry-brown-9aa1b8119/",
   github: "https://github.com/ptbrown4",
   classes: [classHash],
