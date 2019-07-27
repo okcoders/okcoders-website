@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Config from '../config/app.local.conf.js'
-import { notification } from 'antd'
+import { notification, Row, Col, Divider } from 'antd'
 import { isEmpty } from 'lodash'
 import './alumni.component.css';
 import { Logo } from './OKCoderLogo.component';
@@ -36,8 +36,23 @@ export function AlumniDetail(props) {
         <>
             <Logo />
             <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
-                {!error && <AlumniCard alumni={alumni} />
-                }
+                <Row>
+                    <Col span={8}>
+                        {!error && <AlumniCard alumni={alumni} />}
+                    </Col>
+                    <Col span={10}>
+                        <div style={{
+                            fontSize: '25px',
+                            color: "green"
+                        }}> Bio
+                        <Divider />
+                            <p style={{
+                                fontSize: '16px',
+                                color: "black"
+                            }}>{alumni.bio}</p>
+                        </div>
+                    </Col>
+                </Row>
             </div>
         </>
     );
