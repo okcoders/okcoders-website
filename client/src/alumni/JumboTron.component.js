@@ -12,9 +12,8 @@ export const JumboTron = (props) => {
         <p className="lead">You can search by class or by language</p>
         <hr className="my-2" />
         <p>Contact information is on the alumni's card, to learn more about OKCoders, click below!</p>
-        <Button style={{ float: 'left' }} color="primary" onClick={()=> window.open("https://okcoders.com")}>OKCoders Home Page</Button>
-        <br />
-        <Button style={{ margin: 48, flex: 'left' }} color="primary" onClick={()=> window.open(Config.websiteServiceUrl + "addAlumni")}>Add Yourself!</Button>
+        <Button style={{ marginRight: 12 }} type="primary" onClick={()=> window.open("https://okcoders.com")} ghost>OKCoders Home Page</Button>
+        <Button type="primary" onClick={()=> window.open("addAlumni")} ghost>Add Yourself!</Button>
       </Jumbotron>
     </div>
   );
