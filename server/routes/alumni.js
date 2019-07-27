@@ -46,16 +46,18 @@ function modifyAlumniResponse(alum) {
 
 router.post('/', function (req, res, next) {
   var alum = {...req.body.newAlumni};
+  var userGitHub = alum.github;
+  alum.github = 'https://github.com/' + userGitHub;
+  alum.avatar = 'https://avatars1.githubusercontent.com/' + userGitHub;
   var Birthday = moment(alum.birthday);
   alum.birthday = Birthday.toDate();
   var newAlumni = new alumni(alum);
   var errors = [];
 
   function validateUrls() {
-    var userGitHub = newAlumni.github;
-    var re = /(?:http(s)?:\/\/)?(?:www\.)?github\.com\/([a-zA-Z0-9_]+)/.test(userGitHub);
+    var re = /([a-zA-Z0-9_]+)/.test(userGitHub);
     if (!re) {
-      errors.push('That was not a valid Git Hub URL')
+      errors.push('That was not a valid Git Hub Username')
     }
   }
 

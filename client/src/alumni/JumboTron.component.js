@@ -2,6 +2,7 @@ import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
 import './alumni.component.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Config from '../config/app.local.conf.js';
 
 export const JumboTron = (props) => {
   return (
@@ -11,7 +12,8 @@ export const JumboTron = (props) => {
         <p className="lead">You can search by class or by language</p>
         <hr className="my-2" />
         <p>Contact information is on the alumni's card, to learn more about OKCoders, click below!</p>
-        <Button color="primary" onClick={()=> window.open("https://okcoders.com")}>OKCoders Home Page</Button>
+        <Button style={{ marginRight: 12 }} type="primary" onClick={()=> window.open("https://okcoders.com")} ghost>OKCoders Home Page</Button>
+        <Button type="primary" onClick={()=> window.open("addAlumni")} ghost>Add Yourself!</Button>
       </Jumbotron>
     </div>
   );
