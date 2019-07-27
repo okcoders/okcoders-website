@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { withRouter } from 'react-router';
-import "antd/dist/antd.css";
-import './alumni/alumni.component.css';
 import { Alumni } from "./alumni/alumni.component.js"
 import { Class } from "./admin/class.component.js"
 import { AlumniDetail } from "./alumni/alumni-detail.component.js";
@@ -12,7 +9,10 @@ import Login from './alumni/login.js';
 import { NavBar } from './alumni/NavBar.component';
 import { Layout } from 'antd';
 import PrivateRoute from './components/PrivateRoute'
-const { Header, Content, Footer } = Layout;
+import "antd/dist/antd.css";
+import './App.css';
+import './alumni/alumni.component.css';
+const { Content, Footer } = Layout;
 
 class App extends Component {
   render() {
@@ -21,7 +21,8 @@ class App extends Component {
       <>
         <Router>
           <Layout>
-            <Content style={{ padding: '0 75px', marginTop: 24 }} className="content">
+            <Content>
+              {/* style={{ padding: '0 75px', marginTop: 24 }} className="content"> */}
               <Route path="/" exact component={Alumni} />
               <Route path="/alumni" exact component={Alumni} />
               <PrivateRoute path="/admin" exact component={Class} />
