@@ -8,8 +8,6 @@ import baseHeaders from '../utils/baseHeaders';
 const { Meta } = Card;
 const buildConfig = baseHeaders(localStorage.token);
 
-
-
 export function AlumniCard(props) {
     const [auth] = useState(localStorage.getItem('token') || '');
     const guestActions = [
@@ -19,27 +17,11 @@ export function AlumniCard(props) {
     ];
 
     const authActions = [
-        <Popconfirm placement="top" title={'Are you sure you want to delete this alumni? This cannot be undone.'} confirm={confirmDeleteAlumni(id)} okText="Yes" cancelText="No">
+        <Popconfirm placement="top" title={'Are you sure you want to delete this alumni? This cannot be undone.'} okText="Yes" cancelText="No" onConfirm={() => confirmDeleteAlumni(props.alumni._id)}>
             <Icon type='close' />
         </Popconfirm>
     ];
 
-    function confirmDeleteAlumni(id) {
-            fetch(`${Config.websiteServiceUrl}alumni/${id}`, buildConfig({
-              method: `DELETE`
-            }))
-              .then(res => {
-                if (!res.ok) {
-                  throw Error(res.statusText);
-                }
-              })
-              .catch(err => {
-                notification['error']({
-                  message: 'Oh No! Something went wrong!',
-                  description: `Sorry about that! This alumni could not be removed from the list`
-                });
-              });
-    }
     return (
         <Row>
             <Col span={24}>
@@ -60,4 +42,22 @@ export function AlumniCard(props) {
             </Col>
         </Row>
     )
+}
+
+function confirmDeleteAlumni(_id) {
+        fetch(`${Config.websiteServiceUrl}alumni/${_id}`, buildConfig({
+          method: `DELETE`
+        }))
+          .then(res => {
+            if (!res.ok) {
+              throw Error(res.statusText);
+            }
+            document.location.reload();
+          })
+          .catch(err => {
+            notification['error']({
+              message: 'Oh No! Something went wrong!',
+              description: `Sorry about that! This alumni could not be removed from the list`
+            });
+          });
 }
