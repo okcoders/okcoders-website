@@ -125,7 +125,7 @@ function AddAlumniForm(props) {
                         </Form.Item>
 
                         <Form.Item
-                            label="GitHub:" >
+                            label="GitHub Username:" >
                             <Row gutter={8}>
                                 <Col span={12}>
                                     <Input type="text" name="gitHub" value={gitHub} onChange={e => setGitHub(e.target.value)} />
@@ -134,7 +134,7 @@ function AddAlumniForm(props) {
                         </Form.Item>
 
                         <Form.Item
-                            label="LinkedIn:" >
+                            label="LinkedIn URL:" >
                             <Row gutter={8}>
                                 <Col span={12}>
                                     <Input type="text" name="linkedin" value={linkedIn} onChange={e => setLinkedIn(e.target.value)} />
@@ -198,8 +198,7 @@ function AddAlumniForm(props) {
 
         Axios.post(Config.websiteServiceUrl + "alumni", { newAlumni })
             .then(res => {
-                console.log(res);
-                console.log(res.data);
+                successfulSubmitNotification();
                 clearFields();
             }).catch(function (error) {
                 console.log(JSON.stringify(error));
@@ -207,10 +206,19 @@ function AddAlumniForm(props) {
             });
     }
 
+
+    function successfulSubmitNotification() {
+        notification["success"]({
+            message: 'Thank you for your application! It is being reviewed.',
+            duration: 6,
+        });
+    }
+
     function displayNotificationError(error) {
         notification["error"]({
-            message: 'Please populate folloiwng fields:',
+            message: 'Please ensure that you have entered the correct information in all required fields:',
             description: error,
+            duration: 6,
         });
         console.log(error);
     };

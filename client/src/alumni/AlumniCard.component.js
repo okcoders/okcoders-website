@@ -15,13 +15,17 @@ export function AlumniCard(props) {
             actions={[
                 <Icon type="linkedin" onClick={()=> window.open(props.alumni.linkedin)} />, 
                 <Icon type="github" onClick={()=> window.open(props.alumni.github)} />, 
-                <Icon onClick={()=> window.open("alumni/" + props.alumni._id)} type="idcard" />]}
+                <Icon onClick={()=> window.open("alumni/" + props.alumni._id)} type="idcard" />
+                ]}
         >
+        
         <Meta
             avatar={<Avatar src={props.alumni.avatar} />}
             title={props.alumni.firstName + " " + props.alumni.lastName}
-            description={GetAge(props.alumni.birthday) + ' ' + props.alumni.languages}
+            description={"Age: " + GetAge(props.alumni.age)}
             />
+            <br/>
+            <p className="languages">{props.alumni.languages + "\n"}</p>
         </Card>
     )
 }

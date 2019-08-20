@@ -46,20 +46,34 @@ function modifyAlumniResponse(alum) {
 
 router.post('/', function (req, res, next) {
   var alum = {...req.body.newAlumni};
+  var userGitHub = alum.github;
+  alum.github = 'https://github.com/' + userGitHub;
+  alum.avatar = 'https://avatars1.githubusercontent.com/' + userGitHub;
   var Birthday = moment(alum.birthday);
   alum.birthday = Birthday.toDate();
   var newAlumni = new alumni(alum);
   var errors = [];
 
+  function validateUrls() {
+    var re = /([a-zA-Z0-9_]+)/.test(userGitHub);
+    if (!re) {
+      errors.push('That was not a valid Git Hub Username')
+    }
+  }
+
   function findEmptyField() {
     Object.keys(req.body.newAlumni).forEach((value) => {
-      console.log(newAlumni[value].length, value);
       if (!newAlumni[value] || newAlumni[value].length <= 0) {
-        errors.push(value)
+        if (!newAlumni.linkedin || !newAlumni.birthday) {
+          return;
+        } else {
+          errors.push(value)
+        }
       }
     });
   }
 
+  validateUrls();
   findEmptyField();
 
   if (errors.length > 0) {
@@ -78,12 +92,16 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/:id', function (req, res, next) {
-  alumni.findById(req.params.id, (err, alum) => {
+  alumni.findById(req.params.id)
+  .populate({ path: 'classes', populate: { path: 'languages' } })
+  .lean()
+  .exec((err, alum) => {
+    console.log(alum);
     if (err) {
       console.error("couldnt get alumn", err)
       res.status(404).send("Couln't find a Bio for that Alumnus");
     } else {
-      res.json(alum)
+      res.json(modifyAlumniResponse([alum])[0])
     }
   })
 });
