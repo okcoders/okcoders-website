@@ -112,7 +112,7 @@ function renderAlum(alum) {
   return (
     <>
       <List.Item>
-        <AlumniCard alumni={alum} />
+        <AlumniCard alumni={alum}/>
       </List.Item>
     </>
   )
