@@ -26,7 +26,7 @@ const rootPath = path.join(__dirname, '../../');
 app.use(express.static(path.join(rootPath, 'client/build')));
 
 const allowedOrigins = ['http://localhost:3000',
-	'https://okcoders.com'];
+	'https://okcoders.com', 'http://ec2-54-227-171-183.compute-1.amazonaws.com'];
 app.use(cors({
 	origin: function (origin, callback) {
 		// allow requests with no origin
